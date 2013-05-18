@@ -1,0 +1,497 @@
+
+
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title>JQTrig</title>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/hot-sneaks/jquery-ui.css" type="text/css" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js" charset="utf-8"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
+<script src="js/webAudioApiForDesigners.js"></script> 
+<script src="js/jquery.jrumble.1.3.min.js"></script> 
+<script src="js/tuna.js"></script> 
+
+
+
+
+
+<div id="drum">
+
+<div id = "noteOneContainer" >
+<div id= "noteOne"> </div>
+</div>
+
+
+<div id = "noteTwoContainer" >
+<div id= "noteTwo"> </div>
+</div>
+
+
+<div id = "noteThreeContainer" >
+<div id= "noteThree"> </div>
+</div>
+
+<div id = "noteFourContainer" >
+<div id= "noteFour"> </div>
+</div>
+
+
+<div id = "noteFiveContainer" >
+<div id= "noteFive"> </div>
+</div>
+
+
+
+<div id = "noteSixContainer" >
+<div id= "noteSix"> </div>
+</div>
+
+
+<div id = "noteSevenContainer" >
+<div id= "noteSeven"> </div>
+</div>
+
+
+<div id = "noteEightContainer" >
+<div id= "noteEight"> </div>
+</div>
+
+
+
+<div id = "noteNineContainer" >
+<div id= "noteNine"> </div>
+</div>
+
+
+
+</div>
+
+
+<style> 
+
+#drum {
+    
+   border: 9px  solid orange;
+    position:relative;
+    top:20px;
+    left:200px;
+    font-size:30px;
+    width: 370px;
+    height: 370px;
+    background: grey;
+    border-radius: 210px;
+    text-align:center;
+
+
+
+      -webkit-box-shadow:-80px 0 8px rgba(0, 0, 0, 0.4);
+               -moz-box-shadow:-80px 0 8px rgba(0, 0, 0, 0.4);
+                    box-shadow:-80px 0 8px rgba(0, 0, 0, 0.4);
+            -webkit-transform:skew(20deg);
+               -moz-transform:skew(20deg);
+                -ms-transform:skew(20deg);
+                 -o-transform:skew(20deg);
+                    transform:skew(20deg);
+            -webkit-transform-origin:0 50%;
+               -moz-transform-origin:0 50%;
+                -ms-transform-origin:0 50%;
+                 -o-transform-origin:0 50%;
+                    transform-origin:0 50%;
+    
+
+}
+
+#noteOneContainer {
+position:relative;
+top: -5px;
+width:70px;
+left:149px;
+}
+
+#noteOne {
+background-color: orange;
+width:70px;
+height:100px;
+left:143px;
+}
+
+#noteTwoContainer {
+position:relative;
+top: 174px;
+width:70px;
+left:149px;
+}
+
+#noteTwo {
+background-color: orange;
+width:70px;
+height:100px;
+left:143px;
+}
+
+
+#noteThreeContainer {
+position:relative;
+top: -68px;
+width:70px;
+left:10px;
+-webkit-transform:rotate(92deg);
+}
+
+#noteThree {
+background-color: orange;
+width:70px;
+height:100px;
+left:143px;
+-webkit-transform:rotate(0deg);
+}
+
+
+#noteFourContainer {
+position:relative;
+top: -165px;
+width:70px;
+left:289px;
+-webkit-transform:rotate(92deg);
+}
+
+#noteFour {
+background-color: orange;
+width:70px;
+height:100px;
+left:143px;
+-webkit-transform:rotate(0deg);
+}
+
+#noteFiveContainer {
+position:relative;
+top: -169px;
+width:70px;
+left:247px;
+-webkit-transform:rotate(136deg);
+}
+
+#noteFive {
+background-color: orange;
+width:70px;
+height:100px;
+left:142px;
+-webkit-transform:rotate(0deg);
+}
+
+
+#noteSixContainer {
+position:relative;
+top: -270px;
+width:70px;
+left:52px;
+-webkit-transform:rotate(45deg);
+}
+
+#noteSix {
+background-color: orange;
+width:70px;
+height:100px;
+left:142px;
+-webkit-transform:rotate(0deg);
+}
+
+
+#noteSevenContainer {
+position:relative;
+top: -562px;
+width:70px;
+left:51px;
+-webkit-transform:rotate(133deg);
+}
+
+#noteSeven {
+background-color: orange;
+width:70px;
+height:100px;
+left:142px;
+-webkit-transform:rotate(0deg);
+}
+
+
+#noteEightContainer {
+position:relative;
+top: -662px;
+width:70px;
+left:249px;
+-webkit-transform:rotate(45deg);
+}
+
+#noteEight {
+background-color: orange;
+width:70px;
+height:100px;
+left:142px;
+-webkit-transform:rotate(0deg);
+}
+
+#noteNineContainer {
+position:relative;
+top: -672px;
+width:70px;
+left:136px;
+-webkit-transform:rotate(25deg);
+}
+
+#noteNine {
+background-color: orange;
+border: black;
+border-smooth: auto ;
+font-size:30px;
+width: 100px;
+height: 100px;
+-moz-border-radius: 50px;
+-webkit-border-radius: 50px;
+border-radius: 50px;
+}
+
+
+
+</style>
+
+
+
+
+
+
+
+
+<script>
+$(function() {
+var context = initializeNewWebAudioContext();
+// context.loadSound('audio/beep.ogg', 'beep');
+// context.loadFallbackSound('audio/beep.mp3', 'beep');  // this is for Safari
+
+// new!  Now you can pass in an array containing an mp3 and an ogg file to handle fallbacks for safari
+context.loadSound(['audio/F.mp3', 'audio/F.mp3'], 'F_mp3File');    
+
+$("#noteOne")
+    .click(function() {
+        context.playSound('F_mp3File');
+    });
+
+    context.loadSound(['audio/C_large.mp3', 'audio/C_large.mp3'], 'C_LargeFile');    
+
+$("#noteTwo")
+    .click(function() {
+        context.playSound('C_LargeFile');
+    });
+
+
+
+    context.loadSound(['audio/Bb.mp3', 'audio/Bb.mp3'], 'Bb_mp3File');    
+
+$("#noteThree")
+    .click(function() {
+        context.playSound('Bb_mp3File');
+    });
+
+
+
+
+    context.loadSound(['audio/D.mp3', 'audio/D.mp3'], 'D_mp3File');    
+
+$("#noteFour")
+    .click(function() {
+        context.playSound('D_mp3File');
+    });
+
+  
+
+    context.loadSound(['audio/G.mp3', 'audio/G.mp3'], 'G_mp3File');    
+
+$("#noteFive")
+    .click(function() {
+        context.playSound('G_mp3File');
+    });
+
+    context.loadSound(['audio/E.mp3', 'audio/E.mp3'], 'E_mp3File');    
+
+$("#noteSix")
+    .click(function() {
+        context.playSound('E_mp3File');
+    });
+
+
+
+    context.loadSound(['audio/B.mp3', 'audio/B.mp3'], 'B_mp3File');    
+
+$("#noteSeven")
+    .click(function() {
+        context.playSound('B_mp3File');
+    });
+
+    context.loadSound(['audio/A.mp3', 'audio/A.mp3'], 'A_mp3File');    
+
+$("#noteEight")
+    .click(function() {
+        context.playSound('A_mp3File');
+    });
+
+    context.loadSound(['audio/C_Small.mp3', 'audio/C_Small.mp3'], 'C_Small');    
+
+$("#noteNine")
+    .click(function() {
+        context.playSound('C_Small');
+    });
+
+
+
+// JQRumble Code
+
+    $('#noteOne').jrumble({
+        x: .1,
+        y: .1,
+        rotation: .2
+    })
+    
+    var demoTimeout;
+    $('#noteOne').click(function(){
+    $this = $(this);
+    clearTimeout(demoTimeout);
+    $this.trigger('startRumble');
+    demoTimeout = setTimeout(function(){$this.trigger('stopRumble');}, 100)
+});
+
+
+    $('#noteTwo').jrumble({
+        x: .1,
+        y: .1,
+        rotation: .2
+    })
+    
+    var demoTimeout;
+    $('#noteTwo').click(function(){
+    $this = $(this);
+    clearTimeout(demoTimeout);
+    $this.trigger('startRumble');
+    demoTimeout = setTimeout(function(){$this.trigger('stopRumble');}, 100)
+});
+
+
+    $('#noteThree').jrumble({
+        x: .1,
+        y: .1,
+        rotation: .2
+    })
+    
+    var demoTimeout;
+    $('#noteThree').click(function(){
+    $this = $(this);
+    clearTimeout(demoTimeout);
+    $this.trigger('startRumble');
+    demoTimeout = setTimeout(function(){$this.trigger('stopRumble');}, 100)
+});
+
+
+    
+
+
+    $('#noteFour').jrumble({
+        x: .1,
+        y: .1,
+        rotation: .2
+    })
+    
+    var demoTimeout;
+    $('#noteFour').click(function(){
+    $this = $(this);
+    clearTimeout(demoTimeout);
+    $this.trigger('startRumble');
+    demoTimeout = setTimeout(function(){$this.trigger('stopRumble');}, 100)
+});
+
+
+
+
+
+    $('#noteFive').jrumble({
+        x: .1,
+        y: .1,
+        rotation: .2
+    })
+    
+    var demoTimeout;
+    $('#noteFive').click(function(){
+    $this = $(this);
+    clearTimeout(demoTimeout);
+    $this.trigger('startRumble');
+    demoTimeout = setTimeout(function(){$this.trigger('stopRumble');}, 100)
+});
+
+
+
+
+    $('#noteSix').jrumble({
+        x: .1,
+        y: .1,
+        rotation: .2
+    })
+    
+    var demoTimeout;
+    $('#noteSix').click(function(){
+    $this = $(this);
+    clearTimeout(demoTimeout);
+    $this.trigger('startRumble');
+    demoTimeout = setTimeout(function(){$this.trigger('stopRumble');}, 100)
+});
+
+
+
+    $('#noteSeven').jrumble({
+        x: .1,
+        y: .1,
+        rotation: .2
+    })
+    
+    var demoTimeout;
+    $('#noteSeven').click(function(){
+    $this = $(this);
+    clearTimeout(demoTimeout);
+    $this.trigger('startRumble');
+    demoTimeout = setTimeout(function(){$this.trigger('stopRumble');}, 100)
+});
+
+
+
+    $('#noteEight').jrumble({
+        x: .1,
+        y: .1,
+        rotation: .2
+    })
+    
+    var demoTimeout;
+    $('#noteEight').click(function(){
+    $this = $(this);
+    clearTimeout(demoTimeout);
+    $this.trigger('startRumble');
+    demoTimeout = setTimeout(function(){$this.trigger('stopRumble');}, 100)
+});
+
+
+
+    $('#noteNine').jrumble({
+        x: .1,
+        y: .1,
+        rotation: .2
+    })
+    
+    var demoTimeout;
+    $('#noteNine').click(function(){
+    $this = $(this);
+    clearTimeout(demoTimeout);
+    $this.trigger('startRumble');
+    demoTimeout = setTimeout(function(){$this.trigger('stopRumble');}, 100)
+});
+    
+});
+
+
+
+
+</script>

@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title>DigiTank</title>
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
+
+  
+  <!-- Included CSS Files (Uncompressed) -->
+  <!--
+  <link rel="stylesheet" href="stylesheets/foundation.css">
+  -->  
+
+  
+
+  <link rel="stylesheet" href="stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="stylesheets/app.css">
+<link rel="stylesheet" href="css/DigiTankDrum.css">
+  <script src="javascripts/foundation.min.js"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/hot-sneaks/jquery-ui.css" type="text/css" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js" charset="utf-8"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
+ 
+  <script src="javascripts/modernizr.foundation.js"></script>
+  <script src="javascripts/app.js"></script>
+  <script src="js/tuna.js"></script> 
+  <script src="js/digitankdrum.js"></script> 
+  <script src="js/browserblocker/jquery.browserblocker.js"></script> 
+
+
+
+  
+  
+  <div class="row">
+    <div class="twelve columns">
+
+<div id = "instructionButtonbox">
+      <p ><a href="#" data-reveal-id="exampleModal" class="button">Instructions</a></p>
+    </div>
+  </div>
+</div>
+  
+  <div id="exampleModal" class="reveal-modal">
+    <h2>Instructions</h2>
+    <idv id="instructions">
+     To use just click or tap on the drums square tongues. You can also choose different drums & play with the settings. Have fun!
+    </div>
+    <a class="close-reveal-modal">×</a>
+  </div>
+  
+
+  
+  <!-- Included JS Files (Compressed) -->
+
+<style>
+#instructionButtonbox{
+  position:relative;
+  left:0%;
+
+}
+
+.button {
+  font-size: 1.6em;
+}
+
+#instructions{
+font-size: 2.7em;
+color:grey;
+}
+</style>
+  
+
+
+
+  
+  <!-- IE Fix for HTML5 Tags -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+<input id="delayTime" type="range" min="0" max="1" step=".05" value=".1"/>
+
+
+<input id="delayWetLevel" type="range" min="0" max="1" step=".05" value=".1"/>
+
+
+<input id="reverb" type="range" min="0" max="1" step=".05" value=".1"/>
+  
+
+<style>
+.ui-effects-transfer { border: 1px dotted purple; };
+
+
+</style>
+
+<script>
+$(function() {
+$('#drumTwoBig').hide();
+$('#drumThreeBig').hide();
+$('#drumFourBig').hide();
+$('#drumOneBig').hide();
+ $('#drumOneBig').fadeIn(3000);
+
+$('#drumOneMini').click(function(){
+
+  $('#drumTwoBig').hide();
+   $('#drumThreeBig').hide();
+   $('#drumFourBig').hide();
+   $('#drumOneBig').fadeIn(1000);
+      $('#drumOneMini').effect('transfer',{ to: $('#drumOneBig') });
+
+
+
+
+});
+
+$('#drumTwoMini').click(function(){
+   $('#drumOneBig').hide();
+   $('#drumThreeBig').hide();
+   $('#drumFourBig').hide();
+   $('#drumTwoBig').fadeIn(1000);
+      $('#drumTwoMini').effect('transfer',{ to: $('#drumTwoBig') });
+
+
+
+
+});
+
+$('#drumThreeMini').click(function(){
+   $('#drumOneBig').hide();
+   $('#drumTwoBig').hide();
+   $('#drumFourBig').hide();
+   $('#drumThreeBig').fadeIn(1000);
+   $('#drumThreeMini').effect('transfer',{ to: $('#drumThreeBig') });
+
+
+
+});
+
+$('#drumFourMini').click(function(){
+   $('#drumOneBig').hide();
+   $('#drumTwoBig').hide();
+   $('#drumThreeBig').hide();
+   $('#drumFourBig').fadeIn(1000);
+    $('#drumFourMini').effect('transfer',{ to: $('#drumFourBig') });
+
+
+
+});
+
+// START OF animated bars
+
+$(function(){
+  $("#sideBar").animate({
+    height: "110%",
+    width:"6%",
+    opacity:'1',
+    marginLeft: "0.2in",
+    fontSize: "3em",
+    borderWidth: "10px"
+  }, 1500 );
+});
+
+
+
+
+$(function(){
+  $("#bottomBar").animate({
+    height: "1%",
+    width:"100%",
+    opacity:'1',
+    marginLeft: "0.6in",
+    fontSize: "3em",
+    borderWidth: "2px"
+  }, 1500 );
+});
+
+
+
+     
+
+
+ });
+</script>
+
+
+<style>
+#sideBar{
+position:absolute;
+background:#d15400;
+left:-45px;
+top:0px;
+
+}
+
+#bottomBar{
+position:absolute;
+background:#DDDDDD;
+left:0px;
+top:109%;
+
+}
+
+</style>
+<div id="sideBar"></div>
+<div id="bottomBar"></div>
+
+
+
+<!--END OF animated bars-->
+
+
+ 
+  <div class="row">
+    <div class="twelve columns">
+     <a href="http://en.wikiaudio.org">
+  <img src="imgs/Logo.png" height="100" width="100" >
+</a>
+
+
+      <div id="version">
+      <h2>DigiTank App</h2>
+      <p>This is version <strong>0.2</strong></p>
+    </div>
+      <hr />
+    </div>
+  </div>
+
+
+      <!-- Grid Example -->
+  
+      <div class="row">
+        <div class="eight columns">
+          <div class="panel">
+                     
+<div id="drumOneBig">
+
+<div id = "noteOneContainerDrumOneBig" >
+<div id= "noteOneDrumOneBig"> </div>
+</div>
+
+<div id = "noteTwoContainerDrumOneBig" >
+<div id= "noteTwoDrumOneBig"> </div>
+</div>
+
+<div id = "noteThreeContainerDrumOneBig" >
+<div id= "noteThreeDrumOneBig"> </div>
+</div>
+
+<div id = "noteFourContainerDrumOneBig" >
+<div id= "noteFourDrumOneBig"> </div>
+</div>
+
+<div id = "noteFiveContainerDrumOneBig" >
+<div id= "noteFiveDrumOneBig"> </div>
+</div>
+
+<div id = "noteSixContainerDrumOneBig" >
+<div id= "noteSixDrumOneBig"> </div>
+</div>
+
+<div id = "noteSevenContainerDrumOneBig" >
+<div id= "noteSevenDrumOneBig"> </div>
+</div>
+
+<div id = "noteEightContainerDrumOneBig" >
+<div id= "noteEightDrumOneBig"> </div>
+</div>
+
+<div id = "noteNineContainerDrumOneBig" >
+<div id= "noteNineDrumOneBig"> </div>
+</div>
+
+</div>
+<div id="drumTwoBig">
+
+<div id = "noteOneContainerDrumTwoBig" >
+<div id= "noteOneDrumTwoBig"> </div>
+</div>
+
+<div id = "noteTwoContainerDrumTwoBig" >
+<div id= "noteTwoDrumTwoBig"> </div>
+</div>
+
+<div id = "noteThreeContainerDrumTwoBig" >
+<div id= "noteThreeDrumTwoBig"> </div>
+</div>
+
+<div id = "noteFourContainerDrumTwoBig" >
+<div id= "noteFourDrumTwoBig"> </div>
+</div>
+
+<div id = "noteFiveContainerDrumTwoBig" >
+<div id= "noteFiveDrumTwoBig"> </div>
+</div>
+
+<div id = "noteSixContainerDrumTwoBig" >
+<div id= "noteSixDrumTwoBig"> </div>
+</div>
+
+<div id = "noteSevenContainerDrumTwoBig" >
+<div id= "noteSevenDrumTwoBig"> </div>
+</div>
+
+<div id = "noteEightContainerDrumTwoBig" >
+<div id= "noteEightDrumTwoBig"> </div>
+</div>
+
+<div id = "noteNineContainerDrumTwoBig" >
+<div id= "noteNineDrumTwoBig"> </div>
+</div>
+
+</div>
+
+<div id="drumThreeBig">
+
+<div id = "noteOneContainerDrumThreeBig" >
+<div id= "noteOneDrumThreeBig"> </div>
+</div>
+
+<div id = "noteTwoContainerDrumThreeBig" >
+<div id= "noteTwoDrumThreeBig"> </div>
+</div>
+
+<div id = "noteThreeContainerDrumThreeBig" >
+<div id= "noteThreeDrumThreeBig"> </div>
+</div>
+
+<div id = "noteFourContainerDrumThreeBig" >
+<div id= "noteFourDrumThreeBig"> </div>
+</div>
+
+<div id = "noteFiveContainerDrumThreeBig" >
+<div id= "noteFiveDrumThreeBig"> </div>
+</div>
+
+<div id = "noteSixContainerDrumThreeBig" >
+<div id= "noteSixDrumThreeBig"> </div>
+</div>
+
+<div id = "noteSevenContainerDrumThreeBig" >
+<div id= "noteSevenDrumThreeBig"> </div>
+</div>
+
+<div id = "noteEightContainerDrumThreeBig" >
+<div id= "noteEightDrumThreeBig"> </div>
+</div>
+
+<div id = "noteNineContainerDrumThreeBig" >
+<div id= "noteNineDrumThreeBig"> </div>
+</div>
+
+</div>
+
+<div id="drumFourBig">
+
+<div id = "noteOneContainerDrumFourBig" >
+<div id= "noteOneDrumFourBig"> </div>
+</div>
+
+<div id = "noteTwoContainerDrumFourBig" >
+<div id= "noteTwoDrumFourBig"> </div>
+</div>
+
+<div id = "noteThreeContainerDrumFourBig" >
+<div id= "noteThreeDrumFourBig"> </div>
+</div>
+
+<div id = "noteFourContainerDrumFourBig" >
+<div id= "noteFourDrumFourBig"> </div>
+</div>
+
+<div id = "noteFiveContainerDrumFourBig" >
+<div id= "noteFiveDrumFourBig"> </div>
+</div>
+
+<div id = "noteSixContainerDrumFourBig" >
+<div id= "noteSixDrumFourBig"> </div>
+</div>
+
+<div id = "noteSevenContainerDrumFourBig" >
+<div id= "noteSevenDrumFourBig"> </div>
+</div>
+
+<div id = "noteEightContainerDrumFourBig" >
+<div id= "noteEightDrumFourBig"> </div>
+</div>
+
+<div id = "noteNineContainerDrumFourBig" >
+<div id= "noteNineDrumFourBig"> </div>
+</div>
+
+</div>
+          </div>
+        </div>
+        <div class="four columns">
+          <div  id="panelCustom" class="panel">
+<div id="drumOneMini">
+
+<div id = "noteOneContainerDrumOneMini" >
+<div id= "noteOneDrumOneMini"> </div>
+</div>
+
+<div id = "noteTwoContainerDrumOneMini" >
+<div id= "noteTwoDrumOneMini"> </div>
+</div>
+
+<div id = "noteThreeContainerDrumOneMini" >
+<div id= "noteThreeDrumOneMini"> </div>
+</div>
+
+<div id = "noteFourContainerDrumOneMini" >
+<div id= "noteFourDrumOneMini"> </div>
+</div>
+
+<div id = "noteFiveContainerDrumOneMini" >
+<div id= "noteFiveDrumOneMini"> </div>
+</div>
+
+<div id = "noteSixContainerDrumOneMini" >
+<div id= "noteSixDrumOneMini"> </div>
+</div>
+
+<div id = "noteSevenContainerDrumOneMini" >
+<div id= "noteSevenDrumOneMini"> </div>
+</div>
+
+<div id = "noteEightContainerDrumOneMini" >
+<div id= "noteEightDrumOneMini"> </div>
+</div>
+
+<div id = "noteNineContainerDrumOneMini" >
+<div id= "noteNineDrumOneMini"> </div>
+</div>
+
+</div>
+
+<div id="drumTwoMini">
+
+<div id = "noteOneContainerDrumTwoMini" >
+<div id= "noteOneDrumTwoMini"> </div>
+</div>
+
+<div id = "noteTwoContainerDrumTwoMini" >
+<div id= "noteTwoDrumTwoMini"> </div>
+</div>
+
+<div id = "noteThreeContainerDrumTwoMini" >
+<div id= "noteThreeDrumTwoMini"> </div>
+</div>
+
+<div id = "noteFourContainerDrumTwoMini" >
+<div id= "noteFourDrumTwoMini"> </div>
+</div>
+
+<div id = "noteFiveContainerDrumTwoMini" >
+<div id= "noteFiveDrumTwoMini"> </div>
+</div>
+
+<div id = "noteSixContainerDrumTwoMini" >
+<div id= "noteSixDrumTwoMini"> </div>
+</div>
+
+<div id = "noteSevenContainerDrumTwoMini" >
+<div id= "noteSevenDrumTwoMini"> </div>
+</div>
+
+<div id = "noteEightContainerDrumTwoMini" >
+<div id= "noteEightDrumTwoMini"> </div>
+</div>
+
+<div id = "noteNineContainerDrumTwoMini" >
+<div id= "noteNineDrumTwoMini"> </div>
+</div>
+
+</div>
+
+
+
+<div id="drumThreeMini">
+
+<div id = "noteOneContainerDrumThreeMini" >
+<div id= "noteOneDrumThreeMini"> </div>
+</div>
+
+<div id = "noteTwoContainerDrumThreeMini" >
+<div id= "noteTwoDrumThreeMini"> </div>
+</div>
+
+<div id = "noteThreeContainerDrumThreeMini" >
+<div id= "noteThreeDrumThreeMini"> </div>
+</div>
+
+<div id = "noteFourContainerDrumThreeMini" >
+<div id= "noteFourDrumThreeMini"> </div>
+</div>
+
+<div id = "noteFiveContainerDrumThreeMini" >
+<div id= "noteFiveDrumThreeMini"> </div>
+</div>
+
+<div id = "noteSixContainerDrumThreeMini" >
+<div id= "noteSixDrumThreeMini"> </div>
+</div>
+
+<div id = "noteSevenContainerDrumThreeMini" >
+<div id= "noteSevenDrumThreeMini"> </div>
+</div>
+
+<div id = "noteEightContainerDrumThreeMini" >
+<div id= "noteEightDrumThreeMini"> </div>
+</div>
+
+<div id = "noteNineContainerDrumThreeMini" >
+<div id= "noteNineDrumThreeMini"> </div>
+</div>
+
+</div>
+
+<div id="drumFourMini">
+
+<div id = "noteOneContainerDrumFourMini" >
+<div id= "noteOneDrumFourMini"> </div>
+</div>
+
+<div id = "noteTwoContainerDrumFourMini" >
+<div id= "noteTwoDrumFourMini"> </div>
+</div>
+
+<div id = "noteThreeContainerDrumFourMini" >
+<div id= "noteThreeDrumFourMini"> </div>
+</div>
+
+<div id = "noteFourContainerDrumFourMini" >
+<div id= "noteFourDrumFourMini"> </div>
+</div>
+
+<div id = "noteFiveContainerDrumFourMini" >
+<div id= "noteFiveDrumFourMini"> </div>
+</div>
+
+<div id = "noteSixContainerDrumFourMini" >
+<div id= "noteSixDrumFourMini"> </div>
+</div>
+
+<div id = "noteSevenContainerDrumFourMini" >
+<div id= "noteSevenDrumFourMini"> </div>
+</div>
+
+<div id = "noteEightContainerDrumFourMini" >
+<div id= "noteEightDrumFourMini"> </div>
+</div>
+
+<div id = "noteNineContainerDrumFourMini" >
+<div id= "noteNineDrumFourMini"> </div>
+</div>
+
+</div>
+
+
+
+<div id="ampBox">
+<!--     <div id = "distortionOnSwitch">
+  <img src="imgs/on.png" height="" width="" >
+</div>
+  <div id = "distortionOffSwitch">
+  <img src="imgs/off.png" height="" width="" >
+</div>
+ -->
+ <input type="image" src="imgs/off.png" value="play" class="off" id="btn1">
+<img src="imgs/amp.png" height="232" width="232" >
+  </div>
+
+
+
+
+
+<div id="effectsBox">
+    <p id="amount">Amount</p>
+    <div id="sliderOne"></div>
+     <div id="sliderTwo"></div>
+     <div id="sliderThree"></div>
+    <p class="effectsDiscriptions" >Delay Time</p>
+    <p class="effectsDiscriptions" >Delay</p>
+    <p class="effectsDiscriptions" >Reverb</p>
+</div>
+
+          </div>
+
+        </div>
+
+      </div>
+      
+
+       
+ 
+
+      <!-- Grid Example -->
+ 
+   
+
+
+      
+
+
+  
+  
+  <!-- Included JS Files (Uncompressed) -->
+  <!--
+  
+  <script src="javascripts/jquery.js"></script>
+  
+  <script src="javascripts/jquery.foundation.mediaQueryToggle.js"></script>
+  
+  <script src="javascripts/jquery.foundation.forms.js"></script>
+  
+  <script src="javascripts/jquery.foundation.reveal.js"></script>
+  
+  <script src="javascripts/jquery.foundation.orbit.js"></script>
+  
+  <script src="javascripts/jquery.foundation.navigation.js"></script>
+  
+  <script src="javascripts/jquery.foundation.buttons.js"></script>
+  
+  <script src="javascripts/jquery.foundation.tabs.js"></script>
+  
+  <script src="javascripts/jquery.foundation.tooltips.js"></script>
+  
+  <script src="javascripts/jquery.foundation.accordion.js"></script>
+  
+  <script src="javascripts/jquery.placeholder.js"></script>
+  
+  <script src="javascripts/jquery.foundation.alerts.js"></script>
+  
+  <script src="javascripts/jquery.foundation.topbar.js"></script>
+  
+  <script src="javascripts/jquery.foundation.joyride.js"></script>
+  
+  <script src="javascripts/jquery.foundation.clearing.js"></script>
+  
+  <script src="javascripts/jquery.foundation.magellan.js"></script>
+  
+  -->
+
+
+  
+ 
+

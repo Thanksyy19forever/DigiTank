@@ -1,6 +1,6 @@
 DigiTank
 ========
-Note: This app was the first "real" app I attempted to do so there is a lot of unessecary repetition in the code and some things have broken due to updates of varies libraries and the Web Audio API since then which I haven't had time to fix.
+Note: This app was the first "real" app I attempted to do so there is a lot of unnecessary repetition in the code and some things have broken due to updates of varies libraries and the Web Audio API since then which I haven't had time to fix.
 
 DigiTank HTML-5 Web Audio Api Steel Drum App.
 
